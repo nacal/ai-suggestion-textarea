@@ -87,7 +87,9 @@ export default function Home() {
         onInput={handleInputValue}
         className="w-96 h-48 outline p-4 mt-4"
       >
-        <span className="text-gray-400">{suggestions}</span>
+        <span className="text-gray-400" aria-live="polite">
+          {suggestions}
+        </span>
       </div>
     </main>
   )
