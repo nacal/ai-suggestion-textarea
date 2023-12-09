@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useCallback, useEffect, useRef, useState } from 'react'
+import fetchSuggestions from './openai'
 
 export default function Home() {
   const [suggestions, setSuggestions] = useState<string | null>(null)
@@ -12,8 +13,15 @@ export default function Home() {
     }
 
     if ((e.nativeEvent as InputEvent).data && e.currentTarget.textContent) {
-      timer.current = setTimeout(() => {
-        setSuggestions('suggestions')
+      const text = e.currentTarget.textContent
+
+      timer.current = setTimeout(async () => {
+        try {
+          const response = await fetchSuggestions(text)
+          setSuggestions(response)
+        } catch (error) {
+          //　何もしない
+        }
       }, 1000)
     } else {
       setSuggestions(null)
