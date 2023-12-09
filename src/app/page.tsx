@@ -12,9 +12,12 @@ export default function Home() {
     if (timer.current) {
       clearTimeout(timer.current)
     }
-    timer.current = setTimeout(() => {
-      console.log('fetch')
-    }, 1000)
+
+    if ((e.nativeEvent as InputEvent).data) {
+      timer.current = setTimeout(() => {
+        console.log('fetch')
+      }, 1000)
+    }
   }, [])
 
   return (
