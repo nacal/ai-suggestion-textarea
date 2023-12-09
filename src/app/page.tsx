@@ -37,12 +37,13 @@ export default function Home() {
   }, [suggestions])
 
   return (
-    <main className="flex min-h-[100dvh] flex-col items-center justify-center">
+    <main className="min-h-[100dvh] flex flex-col items-center justify-center">
       <div
-        className="w-96 h-48 outline p-4"
         contentEditable
-        onInput={handleInputValue}
         role="textbox"
+        aria-label="プロフィールを入力"
+        onInput={handleInputValue}
+        className="w-96 h-48 outline p-4 mt-4"
       >
         {suggestions && <span className="text-gray-400">{suggestions}</span>}
       </div>
