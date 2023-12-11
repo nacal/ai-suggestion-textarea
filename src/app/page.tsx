@@ -6,6 +6,7 @@ import fetchSuggestions from './openai'
 export default function Home() {
   const [suggestions, setSuggestions] = useState<string | null>(null)
   const timer = useRef<NodeJS.Timeout | null>(null)
+  const textarea = useRef<HTMLDivElement | null>(null)
 
   const resetSuggestions = () => {
     setSuggestions(null)
@@ -47,11 +48,11 @@ export default function Home() {
   }, [])
 
   const commitSuggestions = () => {
-    const textarea = document.getElementById('textbox')
+    const textareaElement = textarea.current
 
-    if (textarea?.firstChild) {
-      textarea.firstChild.textContent = textarea.innerText
-      caretToLast(textarea)
+    if (textareaElement?.firstChild) {
+      textareaElement.firstChild.textContent = textareaElement.innerText
+      caretToLast(textareaElement)
     }
   }
 
@@ -81,7 +82,7 @@ export default function Home() {
       <div
         contentEditable
         suppressContentEditableWarning={true}
-        id="textbox"
+        ref={textarea}
         role="textbox"
         aria-label="プロフィールを入力"
         onInput={handleInputValue}
