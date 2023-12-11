@@ -4,6 +4,8 @@ Similar to Github Copilot, it suggests the continuation of the string entered in
 
 This was created with Next.js.
 
+https://zenn.dev/nacal/articles/535c337a59e686
+
 ## Getting Started
 
 ### Environment variables
